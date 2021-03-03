@@ -1,0 +1,183 @@
+#include<stdio.h>
+#include<math.h>
+#include<GL/glut.h>
+#include<string.h>
+int i=0,win1,win2;
+
+
+//Animation starts here
+void displayAnimation(){
+	glColor3f(0.0,0.0,0.0);
+	
+	glFlush();
+}
+
+
+
+
+//myinit function
+void myinit(){
+	glClearColor(0.0,0.0,0.0,0.1);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0,1000,0,1000);
+}
+
+//myinit2
+void myinit2(){
+	glClearColor(1.0,1.0,1.0,0.1);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0,1000,0,1000);
+}
+
+
+//Front Page displaying text
+char *collegeName="SRINIVAS INSTITUTE OF TECHNOLOGY";
+char *collegeAddress="VALACHIL,MANGALURU-574143";
+char *department="DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING";
+char *subject="COMPUTER GRAPHICS LABORATORY";
+char *topic="MINI PROJECT";
+char *on="ON";
+char *projectName="          THE 3D LIGHTHOUSE";
+char *teamMembers="TEAM MEMBERS";
+char *name1="NITHIN DSOUZA 4SN16CS726";
+char *name2="VIVEK         4SN16CS757";
+char *dept="DEPT OF CSE,'C' SECTION";
+char *proj_guid="PROJECT GUIDED BY";
+char *guideName="Mr ARVIND NAIK";
+char *guidDept="DEPT OF CSE";
+char *assistant="ASSISTANT PROFESSOR";
+char *nextInstuction="Press N/n to continue....";
+void displayFrontPage(){
+	glClear(GL_COLOR_BUFFER_BIT);
+	glutPostRedisplay();
+	glColor3f(0.1,1.0,0.0);
+	glRasterPos2f(320,950);	
+	for(i=0;i<strlen(collegeName);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,collegeName[i]);
+	}
+	glRasterPos2f(410,900);
+	for(i=0;i<strlen(collegeAddress);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_8_BY_13,collegeAddress[i]);
+	}
+	glColor3f(0.1,0.0,1.0);
+	glRasterPos2f(250,800);
+	for(i=0;i<strlen(department);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,department[i]);
+	}
+	glColor3f(1.0,0.0,1.0);
+	glRasterPos2f(330,700);
+	for(i=0;i<strlen(subject);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,subject[i]);
+	}
+	glColor3f(0.1,0.0,1.0);
+	glRasterPos2f(430,610);
+	for(i=0;i<strlen(topic);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,topic[i]);
+	}
+	glColor3f(1.0,0.0,1.0);;
+	glRasterPos2f(480,530);
+	for(i=0;i<strlen(on);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,on[i]);
+	}
+	glColor3f(0.1,0.0,1.0);
+	glRasterPos2f(380,450);
+	for(i=0;i<strlen(projectName);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,projectName[i]);
+	}
+	glColor3f(1.0,0.0,0.0);
+	glRasterPos2f(10,200);
+	for(i=0;i<strlen(teamMembers);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,teamMembers[i]);
+	}
+	glColor3f(1.0,1.0,0.0);
+	glRasterPos2f(10,150);
+	for(i=0;i<strlen(name1);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,name1[i]);
+	}
+	glRasterPos2f(10,100);
+	for(i=0;i<strlen(name2);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,name2[i]);
+	}
+	glRasterPos2f(10,50);
+	for(i=0;i<strlen(dept);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,dept[i]);
+	}
+	glColor3f(1.0,0.0,0.0);
+	glRasterPos2f(820,200);
+	for(i=0;i<strlen(proj_guid);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,proj_guid[i]);
+	}
+	glColor3f(1.0,1.0,0.0);
+	glRasterPos2f(820,150);
+	for(i=0;i<strlen(guideName);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,guideName[i]);
+	}
+	glRasterPos2f(820,100);
+	for(i=0;i<strlen(assistant);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,assistant[i]);
+	}
+	glRasterPos2f(820,50);
+	for(i=0;i<strlen(guidDept);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,guidDept[i]);
+	}
+	glColor3f(2.0,0.5,0.0);
+	glRasterPos2f(420,10);
+	for(i=0;i<strlen(nextInstuction);i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,nextInstuction[i]);
+	}
+	glFlush();
+
+}
+
+
+
+
+
+//Checking for mouse clicked
+void keysFirst(unsigned char key,int x,int y){
+	if(key=='n'||key=='N'){
+		glutDestroyWindow(win1);
+		glutInitDisplayMode(GLUT_RGB|GLUT_SINGLE);
+		glutInitWindowSize(1366,768);
+		win2=glutCreateWindow("THE 3D LIGHTHOUSE");
+		glutFullScreen();
+		glutDisplayFunc(displayAnimation);
+		myinit2();
+		glutMainLoop();
+	}
+
+}
+
+
+
+//This is main
+void main(int argc,char **argv){
+	glutInit(&argc,argv);
+	glutInitDisplayMode(GLUT_RGB|GLUT_SINGLE);
+	glutInitWindowPosition(0,0);
+	glutInitWindowSize(1366,768);
+	win1=glutCreateWindow("THE 3D LIGHTHOUSE");
+    glutDisplayFunc(displayFrontPage);
+	glutFullScreen();
+	myinit();
+    glutKeyboardFunc(keysFirst);
+	glutMainLoop();
+}	
